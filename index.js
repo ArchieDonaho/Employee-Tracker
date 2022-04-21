@@ -5,3 +5,4 @@ initialize = () => {
 };
 
 initialize();
+module.exports = workplace;

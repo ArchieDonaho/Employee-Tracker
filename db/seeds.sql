@@ -23,33 +23,32 @@ VALUES  ('Ronald', 'Firbank', 3, null),
         ('Unica', 'Zurn', 2, 3);
 
 
--- returns all emplyees with their id
-SELECT CONCAT(employee.first_name, ' ' , employee.last_name) AS name
-  FROM employee
+-- -- returns all emplyees with their id
+-- SELECT CONCAT(employee.first_name, ' ' , employee.last_name) AS name
+--   FROM employee
 
--- returns all emplyees with their role and manager names
-SELECT e.id AS id,
-       CONCAT(e.first_name, ' ' , e.last_name) AS name,
-       role.title AS role,
-       department.name AS department,
-       role.salary AS salary,
-       m.first_name AS Manager
-FROM employee e
-  LEFT JOIN role ON e.role_id = role.id
-  LEFT JOIN employee m ON m.ID = e.manager_id
-FROM role
-  LEFT JOIN department ON role.department_id = department.id
+-- -- returns all emplyees with all data
+-- SELECT e.id AS id,
+--        CONCAT(e.first_name, ' ' , e.last_name) AS name,
+--        role.title AS role,
+--        department.name AS department,
+--        role.salary AS salary,
+--        m.first_name AS Manager
+-- FROM employee e
+--   LEFT JOIN role ON e.role_id = role.id
+--   LEFT JOIN employee m ON m.ID = e.manager_id
+--   LEFT JOIN department ON role.department_id = department.id
  
 
--- returns all managers with their id
-SELECT m.id, m.first_name
-FROM employee e
-  JOIN employee m ON m.id = e.manager_id
-  GROUP BY(m.id)
+-- -- returns all managers with their id
+-- SELECT m.id, m.first_name
+-- FROM employee e
+--   JOIN employee m ON m.id = e.manager_id
+--   GROUP BY(m.id)
 
--- returns all roles
-SELECT role.title AS name, 
-       role.salary AS salary, 
-       department.name AS department
-FROM role
-  LEFT JOIN department ON role.department_id = department.id
+-- -- returns all roles
+-- SELECT role.title AS name, 
+--        role.salary AS salary, 
+--        department.name AS department
+-- FROM role
+--   LEFT JOIN department ON role.department_id = department.id
