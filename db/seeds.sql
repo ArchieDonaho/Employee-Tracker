@@ -28,12 +28,18 @@ SELECT CONCAT(employee.first_name, ' ' , employee.last_name) AS name
   FROM employee
 
 -- returns all emplyees with their role and manager names
-SELECT CONCAT(e.first_name, ' ' , e.last_name) AS name,
+SELECT e.id AS id,
+       CONCAT(e.first_name, ' ' , e.last_name) AS name,
        role.title AS role,
+       department.name AS department,
+       role.salary AS salary,
        m.first_name AS Manager
 FROM employee e
- LEFT JOIN employee m ON m.ID = e.manager_id
- LEFT JOIN role ON e.role_id = role.id;
+  LEFT JOIN role ON e.role_id = role.id
+  LEFT JOIN employee m ON m.ID = e.manager_id
+FROM role
+  LEFT JOIN department ON role.department_id = department.id
+ 
 
 -- returns all managers with their id
 SELECT m.id, m.first_name
