@@ -27,6 +27,7 @@ VALUES  ('Ronald', 'Firbank', 3, null),
 -- SELECT CONCAT(employee.first_name, ' ' , employee.last_name) AS name
 --   FROM employee
 
+<<<<<<< HEAD
 -- -- returns all emplyees with all data
 -- SELECT e.id AS id,
 --        CONCAT(e.first_name, ' ' , e.last_name) AS name,
@@ -39,6 +40,15 @@ VALUES  ('Ronald', 'Firbank', 3, null),
 --   LEFT JOIN employee m ON m.ID = e.manager_id
 --   LEFT JOIN department ON role.department_id = department.id
  
+=======
+-- returns all emplyees with their role and manager names
+SELECT CONCAT(e.first_name, ' ' , e.last_name) AS name,
+       role.title AS role,
+       m.first_name AS Manager
+FROM employee e
+ LEFT JOIN employee m ON m.ID = e.manager_id
+ LEFT JOIN role ON e.role_id = role.id;
+>>>>>>> parent of 4a07b28 (updated queries to match acceptance criteria)
 
 -- -- returns all managers with their id
 -- SELECT m.id, m.first_name
