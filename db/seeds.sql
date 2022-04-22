@@ -1,27 +1,31 @@
 INSERT INTO department (name)
 VALUES
-  ('Department 1'),
-  ('Department 2'),
-  ('Department 3');
+  ('Engineering'),
+  ('Finance'),
+  ('Legal'),
+  ('Sales');
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-  ('Engineer', 80000, 1),
-  ('Intern', 40000, 1),
-  ('Manager', 100000, 1);
+  ('Lead Engineer', 150000, 1),
+  ('Software Engineer', 125000, 1),
+  ('Account Manager', 160000, 2),
+  ('Accountant', 125000, 2),
+  ('Legal Team Lead', 250000, 3),
+  ('Lawyer', 190000, 3),
+  ('Sales Lead', 100000, 4),
+  ('Salesperson', 80000, 4);
+
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES  ('Ronald', 'Firbank', 3, null),
-        ('Virginia', 'Woolf', 1, null),
-        ('Piers', 'Gaveston', 1, null),
-        ('Charles', 'LeRoi', 2, 1),
-        ('Katherine', 'Mansfield', 2, 2),
-        ('Dora', 'Carrington', 1, null),
-        ('Edward', 'Bellamy', 2, 3),
-        ('Montague', 'Summers', 2, 2),
-        ('Octavia', 'Butler', 1, 1),
-        ('Unica', 'Zurn', 2, 3);
-
+VALUES  ('Ronald', 'Firbank', 1, null),
+        ('Virginia', 'Woolf', 2, 1),
+        ('Piers', 'Gaveston', 3, null),
+        ('Charles', 'LeRoi', 4, 3),
+        ('Katherine', 'Mansfield', 5, null),
+        ('Dora', 'Carrington', 6, 5),
+        ('Edward', 'Bellamy', 7, null),
+        ('Montague', 'Summers', 8, 7);
 
 -- -- returns all emplyees with their id
 -- SELECT CONCAT(employee.first_name, ' ' , employee.last_name) AS name
@@ -40,11 +44,16 @@ VALUES  ('Ronald', 'Firbank', 3, null),
 --   LEFT JOIN department ON role.department_id = department.id
  
 
--- -- returns all managers with their id
+-- -- returns all managers currently managing an emplyee with their id
 -- SELECT m.id, m.first_name
 -- FROM employee e
 --   JOIN employee m ON m.id = e.manager_id
 --   GROUP BY(m.id)
+
+-- -- returns all emplyees with a manager role
+-- SELECT employee.id AS id, CONCAT(employee.first_name, ' ' , employee.last_name) AS name
+-- FROM employee
+-- WHERE role_id = 3
 
 -- -- returns all roles
 -- SELECT role.title AS name, 
